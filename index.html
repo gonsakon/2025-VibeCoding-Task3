@@ -1,37 +1,689 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; max-width: 100%; }
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC", Arial, sans-serif; line-height: 1.6; }
-    img { max-width: 100%; height: auto; display: block; }
-    .container { width: 1920px; margin: 0 auto; padding: 16px; }
-    nav a { margin-right: 12px; text-decoration: none; }
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
-    .col-12 { grid-column: span 12; }
-    @media (min-width: 768px) { .col-md-6 { grid-column: span 6; } }
-    .card { border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.04); }
-  </style>
-</head>
-<body>
-  <header class="container" role="banner">
-    <nav aria-label="主選單">
-      <a href="#about">關於我</a>
-      <a href="#projects">作品集</a>
-      <a href="https://example.com/blog">技術部落格</a>
-      <a href="mailto:me@example.com">聯絡我</a>
-    </nav>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <h1>你好，我是小明：前端工程師新手之路</h1>
-    <p>歡迎來到我的個人網站！這裡整理了學習紀錄、Side Project 與實作心得。</p>
-  </header>
+  <head>
+    <meta charset="UTF-8">
+    <title>前端工程師個人作品集｜王小明</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="這是一個前端工程師的個人網站作品集，包含關於我、技能專長、專案案例與聯絡方式，展示在網頁開發與使用者介面設計上的專業與風格。"
+    >
+    <style>
+      :root {
+        --color-bg: #f5f7ff;
+        --color-surface: #ffffff;
+        --color-primary: #1f3b73;
+        --color-primary-soft: #e0e7ff;
+        --color-text-main: #1f2933;
+        --color-text-muted: #6b7280;
+        --color-border-soft: #e5e7eb;
+        --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.08);
+        --radius-lg: 16px;
+        --radius-full: 999px;
+      }
 
-  <footer class="container" role="contentinfo">
-    <p>© 2025 My Portfolio · <a href="#">GitHub</a></p>
-    <img src="https://source.unsplash.com/600x200/?technology,abstract" alt="">
-  </footer>
-</body>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text-main);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+      }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        width: min(100% - 2rem, 960px);
+        margin: 0 auto;
+      }
+
+      /* Header & Nav */
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: rgba(245, 247, 255, 0.97);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--color-border-soft);
+      }
+
+      .site-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 0;
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 0.04em;
+        color: var(--color-primary);
+      }
+
+      .logo span {
+        font-weight: 500;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        margin-left: 0.4rem;
+      }
+
+      .site-nav {
+        display: flex;
+        gap: 0.75rem;
+        font-size: 0.9rem;
+      }
+
+      .site-nav a {
+        padding: 0.25rem 0.6rem;
+        border-radius: 999px;
+        text-decoration: none;
+        color: var(--color-text-muted);
+        border: 1px solid transparent;
+      }
+
+      .site-nav a:hover {
+        border-color: var(--color-primary-soft);
+        background-color: #ffffff;
+        color: var(--color-primary);
+      }
+
+      /* Hero */
+
+      .hero {
+        padding: 2.5rem 0 2.75rem;
+      }
+
+      .hero-inner {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        align-items: stretch;
+      }
+
+      .hero-card {
+        background-color: var(--color-surface);
+        border-radius: 24px;
+        padding: 1.75rem 1.5rem;
+        box-shadow: var(--shadow-soft);
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+
+      .hero-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+
+      .hero-kicker {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        background-color: var(--color-primary-soft);
+        padding: 0.2rem 0.75rem;
+        border-radius: var(--radius-full);
+        width: fit-content;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin: 0;
+      }
+
+      .hero-subtitle {
+        margin: 0;
+        font-size: 0.95rem;
+        color: var(--color-text-muted);
+      }
+
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+      }
+
+      .hero-meta span {
+        padding: 0.2rem 0.7rem;
+        border-radius: var(--radius-full);
+        background-color: #f3f4f6;
+        color: #4b5563;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.25rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.55rem 1.1rem;
+        border-radius: var(--radius-full);
+        font-size: 0.9rem;
+        font-weight: 600;
+        border: 1px solid transparent;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background-color: var(--color-primary);
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        filter: brightness(1.05);
+      }
+
+      .btn-ghost {
+        background-color: #ffffff;
+        color: var(--color-primary);
+        border-color: var(--color-primary-soft);
+      }
+
+      .btn-ghost:hover {
+        background-color: var(--color-primary-soft);
+      }
+
+      .hero-media {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .hero-media figure {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 18px;
+      }
+
+      .hero-media figcaption {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+      }
+
+      /* Sections */
+
+      .section {
+        padding: 2.25rem 0;
+      }
+
+      .section-header {
+        margin-bottom: 1.25rem;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        margin: 0 0 0.25rem;
+      }
+
+      .section-subtitle {
+        margin: 0;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+      }
+
+      /* About */
+
+      .about-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .about-text p {
+        margin: 0 0 0.75rem;
+        font-size: 0.95rem;
+      }
+
+      .about-text p:last-child {
+        margin-bottom: 0;
+      }
+
+      .about-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+      }
+
+      .about-meta span {
+        background-color: #f3f4f6;
+        padding: 0.25rem 0.7rem;
+        border-radius: var(--radius-full);
+      }
+
+      /* Skills */
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+
+      .skill-pill {
+        padding: 0.35rem 0.75rem;
+        border-radius: var(--radius-full);
+        background-color: #ffffff;
+        border: 1px solid var(--color-border-soft);
+        font-size: 0.85rem;
+      }
+
+      .skills-note {
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        margin-top: 0.75rem;
+      }
+
+      /* Projects */
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .project-card {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: 1.25rem;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .project-card h3 {
+        margin: 0.75rem 0 0.25rem;
+        font-size: 1rem;
+      }
+
+      .project-card p {
+        margin: 0 0 0.5rem;
+        font-size: 0.9rem;
+        color: var(--color-text-muted);
+      }
+
+      .project-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 0.5rem;
+        font-size: 0.8rem;
+      }
+
+      .project-meta span {
+        background-color: #f3f4f6;
+        padding: 0.15rem 0.55rem;
+        border-radius: var(--radius-full);
+      }
+
+      .project-link {
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      /* Contact */
+
+      .contact-card {
+        background-color: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: 1.5rem 1.25rem;
+        box-shadow: var(--shadow-soft);
+        font-size: 0.95rem;
+      }
+
+      .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 0.75rem 0 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        font-size: 0.9rem;
+      }
+
+      .contact-list li span {
+        display: inline-block;
+        min-width: 3.5rem;
+        color: var(--color-text-muted);
+      }
+
+      .contact-list a {
+        text-decoration: underline;
+        text-decoration-thickness: 1px;
+      }
+
+      /* Footer */
+
+      .site-footer {
+        padding: 1.5rem 0 2rem;
+        font-size: 0.8rem;
+        color: var(--color-text-muted);
+        text-align: center;
+      }
+
+      /* RWD */
+
+      @media (min-width: 768px) {
+        .site-header-inner {
+          padding: 0.9rem 0;
+        }
+
+        .hero {
+          padding: 3.25rem 0 3.5rem;
+        }
+
+        .hero-card {
+          flex-direction: row;
+          align-items: center;
+          padding: 2rem;
+        }
+
+        .hero-text {
+          flex: 3;
+        }
+
+        .hero-media {
+          flex: 2;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .about-grid {
+          flex-direction: row;
+          align-items: center;
+        }
+
+        .about-text {
+          flex: 3;
+        }
+
+        .about-media {
+          flex: 2;
+        }
+
+        .projects-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .section {
+          padding: 2.75rem 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <div class="logo">
+          Ming.dev
+          <span>前端工程師作品集</span>
+        </div>
+        <nav class="site-nav" aria-label="主選單">
+          <a href="#hero">首頁</a>
+          <a href="#about">關於我</a>
+          <a href="#skills">技能</a>
+          <a href="#projects">作品集</a>
+          <a href="#contact">聯絡我</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section id="hero" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-card">
+            <div class="hero-text">
+              <p class="hero-kicker">Front-end Portfolio</p>
+              <h1>嗨，我是王小明，一位重視使用者體驗的前端工程師。</h1>
+              <p class="hero-subtitle">
+                透過乾淨的程式碼與清楚的畫面結構，打造讓使用者看得懂、客戶交得出的商業網站與作品集。
+                這個頁面將陸續放上更完整的自我介紹與專案內容。
+              </p>
+              <div class="hero-meta">
+                <span>RWD 網頁切版</span>
+                <span>前端工程師求職作品集</span>
+              </div>
+              <div class="hero-actions">
+                <a href="#projects" class="btn btn-primary">查看作品範例</a>
+                <a href="#contact" class="btn btn-ghost">聯絡我</a>
+              </div>
+            </div>
+            <div class="hero-media">
+              <figure>
+                <img
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80"
+                  alt="一位開發者在桌前使用筆電寫程式"
+                >
+              </figure>
+              <figcaption>
+                圖片來源：Unsplash，呈現日常開發情境，未來可替換成個人形象照。
+              </figcaption>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">關於我</h2>
+            <p class="section-subtitle">
+              這裡會放上更完整的自我介紹、職涯故事與目前的求職或接案方向。
+            </p>
+          </header>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                我是一位專注在前端開發的工程師，擅長將設計稿轉換成具備 RWD
+                的網頁畫面，並重視效能與可維護性。未來這個區塊會補上更具體的經歷、興趣與學習歷程。
+              </p>
+              <p>
+                目前網站仍在規格階段，內容以占位文字為主，方便日後依照 SDD
+                持續補齊每個段落與細節。
+              </p>
+              <div class="about-meta">
+                <span>專注：前端工程師求職</span>
+                <span>地點：台灣・遠端友善</span>
+                <span>模式：正職 / 接案合作</span>
+              </div>
+            </div>
+            <div class="about-media">
+              <img
+                src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80"
+                alt="在會議桌前討論介面設計與程式開發的團隊"
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">技能</h2>
+            <p class="section-subtitle">
+              以下為暫時的技能分類，之後可以依照實際程度補上熟練度與使用年資。
+            </p>
+          </header>
+          <div>
+            <div class="skills-list" aria-label="技能標籤列表">
+              <span class="skill-pill">HTML5 語意化標籤</span>
+              <span class="skill-pill">CSS3 / Flexbox / Grid</span>
+              <span class="skill-pill">RWD 響應式網頁</span>
+              <span class="skill-pill">基本 SEO 結構</span>
+              <span class="skill-pill">設計稿切版實作</span>
+              <span class="skill-pill">Git / GitHub</span>
+            </div>
+            <p class="skills-note">
+              後續可以在這裡補上技能樹、工具清單（例如 Figma、VS Code）、以及與求職相關的關鍵字。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">作品集</h2>
+            <p class="section-subtitle">
+              這裡會放入實際完成的商業網站或 side project，目前先以占位卡片示意版面結構。
+            </p>
+          </header>
+          <div class="projects-grid">
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=900&q=80"
+                alt="顯示網站設計線框與介面雛形的螢幕與筆記本"
+              >
+              <h3>個人品牌 Landing Page（示意）</h3>
+              <div class="project-meta">
+                <span>RWD</span>
+                <span>Landing Page</span>
+              </div>
+              <p>
+                預計放上一個為個人品牌量身打造的 Landing
+                Page，展示清楚的資訊架構與行動呼籲按鈕設計。
+              </p>
+              <a
+                class="project-link"
+                href="https://example.com/project-personal-landing"
+              >
+                查看專案說明頁（示意連結）
+              </a>
+            </article>
+
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80"
+                alt="咖啡店風格的室內空間與筆電，象徵側專案開發情境"
+              >
+              <h3>側專案儀表板介面（示意）</h3>
+              <div class="project-meta">
+                <span>前端切版</span>
+                <span>儀表板 UI</span>
+              </div>
+              <p>
+                未來可以放入管理後台或儀表板畫面，展示在表格、標籤與卡片排版上的掌握度。
+              </p>
+              <a
+                class="project-link"
+                href="https://example.com/project-dashboard"
+              >
+                查看專案說明頁（示意連結）
+              </a>
+            </article>
+
+            <article class="project-card">
+              <img
+                src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80"
+                alt="程式碼畫面與螢幕前作業的開發者"
+              >
+              <h3>課程作業與練習彙整</h3>
+              <div class="project-meta">
+                <span>學習成果</span>
+                <span>前端作品集</span>
+              </div>
+              <p>
+                這裡可以整理課程中的小專案與練習作品，讓 HR 一眼就能看見你的學習進度與成長軌跡。
+              </p>
+              <a
+                class="project-link"
+                href="https://example.com/project-learning"
+              >
+                查看作品整理頁（示意連結）
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section">
+        <div class="container">
+          <header class="section-header">
+            <h2 class="section-title">聯絡我</h2>
+            <p class="section-subtitle">
+              歡迎就正職職缺、合作機會或 side project
+              邀約與我聯繫，後續會依照實際情況補上更多聯絡管道。
+            </p>
+          </header>
+          <div class="contact-card">
+            <p>
+              目前這個區塊以簡單文字為主，未來可以新增聯絡表單、常見問題或社群連結，方便 HR
+              與合作夥伴快速取得資訊。
+            </p>
+            <ul class="contact-list">
+              <li>
+                <span>E-mail</span>
+                <a href="mailto:hello.ming.dev@example.com">
+                  hello.ming.dev@example.com
+                </a>
+              </li>
+              <li>
+                <span>GitHub</span>
+                <a href="https://example.com/ming-github">
+                  https://example.com/ming-github
+                </a>
+              </li>
+              <li>
+                <span>LinkedIn</span>
+                <a href="https://example.com/ming-linkedin">
+                  https://example.com/ming-linkedin
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      © 2025 王小明 Ming · 個人前端工程師作品集
+    </footer>
+  </body>
 </html>
