@@ -1,3 +1,10 @@
+	•	更新 About 區 HTML 結構：改成「上方照片、下方標題＋三段文字＋重點 bullet」，並依 SDD 寫入正式文案。
+	•	依 SDD 調整文案內容：分成「我是誰＋現在在做什麼」、「學程式與轉職動機」、「目前擅長與加強方向」三段。
+	•	新增重點列表（about-highlights）：列出 4 點個人強項。
+	•	更換 About 區圖片為符合 SDD 的 Unsplash 開發者情境照片，並更新 alt 描述。
+	•	調整 About 區 CSS：新增 .about-content、.about-highlights 等樣式，優化段落與列表閱讀性。
+	•	調整 RWD 行為：維持手機單欄（上圖下文），桌機版改為左圖右文，並將 About 區最大寬度收斂至約 960px。
+
 <!DOCTYPE html>
 <html lang="zh-Hant">
 
@@ -193,16 +200,41 @@
             gap: 16px;
         }
 
+        .section-about .container {
+            max-width: 960px;
+        }
+
         .about-image {
             border-radius: 10px;
             overflow: hidden;
             max-width: 420px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-content {
+            margin-top: 16px;
         }
 
         .about-copy {
             margin-top: 8px;
             color: #d7e9ff;
             opacity: 0.95;
+        }
+
+        .about-copy p {
+            margin: 0 0 10px 0;
+        }
+
+        .about-highlights {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+            list-style: disc;
+            color: #dff2ff;
+        }
+
+        .about-highlights li {
+            margin-bottom: 4px;
         }
 
         /* CSS:ABOUT-END */
@@ -284,8 +316,13 @@
 
             .about-grid {
                 display: grid;
-                grid-template-columns: 1fr 360px;
+                grid-template-columns: 360px minmax(0, 1fr);
+                gap: 28px;
                 align-items: start;
+            }
+
+            .about-content {
+                margin-top: 0;
             }
 
             .projects-grid {
@@ -323,9 +360,13 @@
         <header class="site-header">
             <div class="container nav" role="navigation" aria-label="主要導覽列">
                 <div class="brand" aria-hidden="false">Your Name · Frontend Dev</div>
-                <nav class="nav-list" aria-label="主選單"> <a class="nav-link" href="#hero">首頁</a> <a class="nav-link"
-                        href="#about">關於我</a> <a class="nav-link" href="#skills">技能</a> <a class="nav-link"
-                        href="#projects">作品集</a> <a class="nav-link" href="#contact">聯絡我</a> </nav>
+                <nav class="nav-list" aria-label="主選單">
+                    <a class="nav-link" href="#hero">首頁</a>
+                    <a class="nav-link" href="#about">關於我</a>
+                    <a class="nav-link" href="#skills">技能</a>
+                    <a class="nav-link" href="#projects">作品集</a>
+                    <a class="nav-link" href="#contact">聯絡我</a>
+                </nav>
             </div>
         </header>
         <main role="main">
@@ -355,16 +396,24 @@
             <!-- SECTION:ABOUT-START -->
             <section id="about" class="section section-about" aria-labelledby="about-heading">
                 <div class="container">
-                    <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
                     <div class="about-grid">
-                        <div class="about-copy">
-                            <p>這裡目前是 About 區的占位內容。未來會放更完整的自我介紹、工作經歷與設計/開發理念。</p>
-                            <p>之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼回來，完全取代這一區。</p>
-                        </div>
-
                         <div class="about-image" aria-hidden="false">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                                alt="辦公桌上有筆電與筆記本的工作情境" loading="lazy" />
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                                alt="一位前端開發者坐在桌前使用筆電工作" loading="lazy" />
+                        </div>
+                        <div class="about-content">
+                            <h2 id="about-heading" class="section-title">關於我的開發旅程</h2>
+                            <div class="about-copy">
+                                <p>我原本是非本科背景，因為很想做出真正能被使用者看見、實際解決問題的產品，開始自學前端開發。</p>
+                                <p>自學的過程中，我透過線上課程與實作多個小型專案，一步步累積 HTML、CSS、JavaScript 能力，也在這段歷程裡確認自己想正式往前端工程師方向轉職。</p>
+                                <p>目前主要使用 HTML、CSS、JavaScript 開發網頁，持續練習 RWD 版型與前端效能優化，希望能加入實際的商業團隊，一邊參與專案，一邊把程式碼品質拉到更專業的水準。</p>
+                                <ul class="about-highlights">
+                                    <li>自學半年以上，完成多個 RWD 網站作品</li>
+                                    <li>習慣把設計稿拆解成有結構的版型與元件</li>
+                                    <li>熟悉 Git / GitHub 版控與基本協作流程</li>
+                                    <li>樂於主動溝通，會先把需求寫成清楚規格再開始寫程式</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
