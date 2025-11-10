@@ -1,370 +1,460 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>陳品睿 · 前端開發工程師 | Frontend Developer Portfolio</title>
-  <meta name="description" content="陳品睿的個人品牌網站，展示前端開發技能、專案作品集與個人背景介紹。擅長 HTML、CSS、JavaScript 等現代網頁技術，歡迎瀏覽作品或與我聯繫。">
-  
-  <style>
-    /* CSS:BASE-START */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>程式設計師 | 您的姓名 · 前端開發 - 個人品牌作品集</title>
+    <meta name="description" content="您的姓名 · 前端開發者的個人品牌網站。在此展示我的專業技能、精選作品集、關於我的介紹與聯絡方式。致力於打造高效能、用戶友善的網頁應用。">
     
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
-      line-height: 1.6;
-      color: #e0e0e0;
-      background-color: #0a1929;
-    }
-    
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      width: 100%;
-    }
-    
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-    
-    .section {
-      padding: 4rem 0;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1.5rem;
-      color: #ffffff;
-    }
-    
-    main {
-      flex: 1;
-    }
-    /* CSS:BASE-END */
-    
-    /* CSS:NAV-START */
-    .site-header {
-      background-color: #132f4c;
-      border-bottom: 2px solid #1e4976;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .nav-logo {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #66b2ff;
-      text-decoration: none;
-    }
-    
-    .nav-menu {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    
-    .nav-link {
-      color: #b0bec5;
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.3s ease;
-    }
-    
-    .nav-link:hover,
-    .nav-link:focus {
-      color: #66b2ff;
-    }
-    /* CSS:NAV-END */
-    
-    /* CSS:HERO-START */
-    .section-hero {
-      background: linear-gradient(135deg, #0a1929 0%, #1a2f4a 100%);
-      padding: 6rem 0;
-      text-align: center;
-    }
-    
-    .hero-title {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #ffffff;
-      font-weight: 700;
-    }
-    
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: #66b2ff;
-      margin-bottom: 1.5rem;
-    }
-    
-    .hero-description {
-      color: #b0bec5;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    
-    .hero-note {
-      font-size: 0.875rem;
-      color: #78909c;
-      font-style: italic;
-      margin-top: 2rem;
-    }
-    /* CSS:HERO-END */
-    
-    /* CSS:ABOUT-START */
-    .section-about {
-      background-color: #0d2137;
-    }
-    
-    .about-placeholder {
-      color: #90a4ae;
-      font-style: italic;
-    }
-    /* CSS:ABOUT-END */
-    
-    /* CSS:SKILLS-START */
-    .section-skills {
-      background-color: #0a1929;
-    }
-    
-    .skills-placeholder {
-      color: #90a4ae;
-      font-style: italic;
-    }
-    /* CSS:SKILLS-END */
-    
-    /* CSS:PROJECTS-START */
-    .section-projects {
-      background-color: #0d2137;
-    }
-    
-    .projects-placeholder {
-      color: #90a4ae;
-      font-style: italic;
-    }
-    /* CSS:PROJECTS-END */
-    
-    /* CSS:CONTACT-START */
-    .section-contact {
-      background-color: #0a1929;
-    }
-    
-    .contact-placeholder {
-      color: #90a4ae;
-      font-style: italic;
-    }
-    
-    .contact-list {
-      list-style: none;
-      padding: 0;
-      margin-top: 1.5rem;
-    }
-    
-    .contact-item {
-      margin-bottom: 1rem;
-    }
-    
-    .contact-link {
-      color: #66b2ff;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    
-    .contact-link:hover,
-    .contact-link:focus {
-      color: #90caf9;
-    }
-    /* CSS:CONTACT-END */
-    
-    /* CSS:FOOTER-START */
-    .site-footer {
-      background-color: #050e18;
-      color: #78909c;
-      text-align: center;
-      padding: 2rem 0;
-      border-top: 1px solid #1e4976;
-    }
-    
-    .footer-text {
-      margin: 0;
-      font-size: 0.875rem;
-    }
-    /* CSS:FOOTER-END */
-    
-    /* CSS:RWD-START */
-    @media (min-width: 768px) {
-      .section {
-        padding: 6rem 0;
-      }
-      
-      .hero-title {
-        font-size: 3.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.5rem;
-      }
-      
-      .section-title {
-        font-size: 2.5rem;
-      }
-      
-      .nav-menu {
-        gap: 2rem;
-      }
-    }
-    
-    @media (min-width: 1024px) {
-      .hero-title {
-        font-size: 4rem;
-      }
-      
-      .section {
-        padding: 8rem 0;
-      }
-    }
-    /* CSS:RWD-END */
-  </style>
+    <style>
+        /* CSS:BASE-START */
+        /* * 全站基底樣式 (CSS:BASE) 
+         * 包含 reset、字體、基礎顏色、全域排版等。
+         * 嚴禁使用 #ID 選擇器。
+         */
+        
+        :root {
+            /* 顏色配置 (深色主題) */
+            --color-primary: #00bcd4; /* 青色/深藍色系主色 */
+            --color-background: #1a1a2e; /* 深藍背景 */
+            --color-surface: #2c2c4d; /* 區塊表面色 */
+            --color-text-primary: #ffffff; /* 主要文字 (白色) */
+            --color-text-secondary: #cccccc; /* 次要文字/輔助色 */
+            --color-border: #4a4a70; /* 邊界線 */
+            --font-family-system: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background-color: var(--color-background);
+            color: var(--color-text-primary);
+            font-family: var(--font-family-system);
+            line-height: 1.6;
+            font-size: 16px; /* 基礎字體大小 */
+            min-width: 320px;
+            overflow-x: hidden; /* 防止 320px 時出現水平捲動 */
+        }
+        
+        /* 內文容器 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 1.5rem; /* 手機版邊距 */
+            padding-right: 1.5rem;
+        }
+
+        /* 區塊基礎樣式 */
+        .section {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+            text-align: center;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* 按鈕樣式 (占位用) */
+        .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-primary);
+            color: var(--color-background); /* 按鈕文字用深色與背景形成對比 */
+            border-radius: 4px;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #00e5ff;
+            color: var(--color-background);
+        }
+
+        /* 導覽列樣式 */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: var(--color-surface);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4rem;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--color-text-primary);
+        }
+
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 1.5rem; /* 連結間距 */
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .nav-link:hover {
+            color: var(--color-primary);
+        }
+        
+        /* 版權資訊 */
+        .site-footer {
+            background-color: var(--color-surface);
+            padding: 1.5rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* CSS:BASE-END */
+
+        /* CSS:HERO-START */
+        /* Hero 區塊樣式 - 手機優先 */
+        .section-hero {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+            text-align: center;
+            background-color: var(--color-background);
+        }
+        
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-cta-group {
+            margin-top: 2rem;
+        }
+        
+        .hero-placeholder-image {
+            margin-top: 3rem;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-placeholder-image img {
+            width: 100%;
+            object-fit: cover;
+        }
+        /* CSS:HERO-END */
+
+        /* CSS:ABOUT-START */
+        /* About 區塊樣式 */
+        .section-about {
+            background-color: var(--color-surface);
+        }
+        /* CSS:ABOUT-END */
+
+        /* CSS:SKILLS-START */
+        /* Skills 區塊樣式 */
+        .section-skills {
+            text-align: center;
+        }
+        
+        .skills-placeholder-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .skills-placeholder-item {
+            background-color: var(--color-surface);
+            color: var(--color-text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            border: 1px solid var(--color-border);
+        }
+        /* CSS:SKILLS-END */
+
+        /* CSS:PROJECTS-START */
+        /* Projects 區塊樣式 */
+        .section-projects {
+            background-color: var(--color-surface);
+        }
+        
+        .project-placeholder-card {
+            background-color: var(--color-background);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-placeholder-content {
+            padding: 1.5rem;
+        }
+        
+        .project-placeholder-card h3 {
+            color: var(--color-primary);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-placeholder-card p {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+        }
+        /* CSS:PROJECTS-END */
+
+        /* CSS:CONTACT-START */
+        /* Contact 區塊樣式 */
+        .section-contact {
+            text-align: center;
+        }
+        
+        .contact-placeholder-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 2rem;
+        }
+        
+        .contact-placeholder-list li {
+            margin-bottom: 1rem;
+        }
+        /* CSS:CONTACT-END */
+
+        /* CSS:RWD-START */
+        /* RWD 媒體查詢 - 至少包含 768px 與 1440px */
+        
+        /* 平板電腦 (Tablet) - min-width: 768px */
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+            
+            .section {
+                padding-top: 6rem;
+                padding-bottom: 6rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            /* Projects 區塊的 RWD 示範：雙欄排版 */
+            .projects-placeholder-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            
+            .project-placeholder-card {
+                margin-bottom: 0; /* 在 Grid 中移除 margin-bottom */
+            }
+        }
+        
+        /* 桌面電腦 (Desktop) - min-width: 1440px */
+        @media (min-width: 1440px) {
+            .container {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        /* CSS:RWD-END */
+    </style>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <nav class="nav">
-        <a href="#hero" class="nav-logo">陳品睿 · Frontend Dev</a>
-        <ul class="nav-menu">
-          <li><a href="#hero" class="nav-link">首頁</a></li>
-          <li><a href="#about" class="nav-link">關於我</a></li>
-          <li><a href="#skills" class="nav-link">技能</a></li>
-          <li><a href="#projects" class="nav-link">作品集</a></li>
-          <li><a href="#contact" class="nav-link">聯絡我</a></li>
-        </ul>
-      </nav>
-    </header>
-    
-    <main>
-      <!-- SECTION:HERO-START -->
-      <section id="hero" class="section section-hero">
-        <div class="container">
-          <h1 class="hero-title">打造優質使用者體驗</h1>
-          <p class="hero-subtitle">前端開發工程師 | Frontend Developer</p>
-          <p class="hero-description">
-            這裡是 Hero 區的占位內容。未來會包含：一句話自我介紹、核心職稱與專長領域，以及行動呼籲（例如：瀏覽作品集、下載履歷）。
-          </p>
-          <p class="hero-description">
-            這個區域會使用視覺化設計吸引訪客注意，並清楚傳達個人品牌定位。
-          </p>
-          <p class="hero-note">
-            ※ 之後會用 Section SDD 的 Prompt 產生正式文案與版面，再把整個 section 貼回來取代這一區。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:HERO-END -->
-      
-      <!-- SECTION:ABOUT-START -->
-      <section id="about" class="section section-about" aria-labelledby="about-heading">
-        <div class="container">
-          <h2 id="about-heading" class="section-title">關於我（之後會用 Section SDD 替換）</h2>
-          <p class="about-placeholder">
-            這裡目前是 About 區的占位內容。未來會包含個人背景介紹、工作經驗、教育背景，以及個人照片或形象圖片。
-          </p>
-          <p class="about-placeholder">
-            之後會用 Section SDD 的 Prompt 產生更完整的內容與版面配置。請把新的 section 程式碼整段貼在 SECTION:ABOUT-START 與 SECTION:ABOUT-END 兩個註解中間，完全取代現在這一區。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:ABOUT-END -->
-      
-      <!-- SECTION:SKILLS-START -->
-      <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
-        <div class="container">
-          <h2 id="skills-heading" class="section-title">技能（之後會用 Section SDD 替換）</h2>
-          <p class="skills-placeholder">
-            這裡目前是 Skills 區的占位內容。未來會展示技術技能列表，例如：HTML、CSS、JavaScript、React、Vue 等前端技術，以及相關工具與框架。
-          </p>
-          <p class="skills-placeholder">
-            之後會用 Section SDD 的 Prompt 產生完整的技能展示內容，可能包含技能分類、熟練度指標等視覺化元素。請把新的 section 程式碼整段貼在 SECTION:SKILLS-START 與 SECTION:SKILLS-END 兩個註解中間，完全取代現在這一區。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:SKILLS-END -->
-      
-      <!-- SECTION:PROJECTS-START -->
-      <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
-        <div class="container">
-          <h2 id="projects-heading" class="section-title">作品集（之後會用 Section SDD 替換）</h2>
-          <p class="projects-placeholder">
-            這裡目前是 Projects 區的占位內容。未來會展示個人專案作品，每個作品包含專案截圖、簡短描述、使用技術，以及相關連結（如 GitHub、Live Demo）。
-          </p>
-          <p class="projects-placeholder">
-            之後會用 Section SDD 的 Prompt 產生完整的作品集內容，可能採用卡片式或網格式排版。請把新的 section 程式碼整段貼在 SECTION:PROJECTS-START 與 SECTION:PROJECTS-END 兩個註解中間，完全取代現在這一區。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:PROJECTS-END -->
-      
-      <!-- SECTION:CONTACT-START -->
-      <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-        <div class="container">
-          <h2 id="contact-heading" class="section-title">聯絡我（之後會用 Section SDD 替換）</h2>
-          <p class="contact-placeholder">
-            這裡目前是 Contact 區的占位內容。未來會提供多種聯絡方式，讓訪客可以輕鬆與我取得聯繫。
-          </p>
-          <ul class="contact-list">
-            <li class="contact-item">
-              <strong>Email：</strong>
-              <a href="mailto:hello@example.com" class="contact-link">hello@example.com</a>
-            </li>
-            <li class="contact-item">
-              <strong>GitHub：</strong>
-              <a href="https://github.com/yourname" class="contact-link" target="_blank" rel="noopener noreferrer">github.com/yourname</a>
-            </li>
-            <li class="contact-item">
-              <strong>LinkedIn：</strong>
-              <a href="https://www.linkedin.com/in/yourname" class="contact-link" target="_blank" rel="noopener noreferrer">linkedin.com/in/yourname</a>
-            </li>
-          </ul>
-          <p class="contact-placeholder">
-            之後會用 Section SDD 的 Prompt 產生更完整的聯絡資訊與互動元素。請把新的 section 程式碼整段貼在 SECTION:CONTACT-START 與 SECTION:CONTACT-END 兩個註解中間，完全取代現在這一區。
-          </p>
-        </div>
-      </section>
-      <!-- SECTION:CONTACT-END -->
-    </main>
-    
-    <footer class="site-footer">
-      <div class="container">
-        <p class="footer-text">© 2025 陳品睿 · Frontend Developer. All rights reserved.</p>
-      </div>
-    </footer>
-  </div>
+    <div class="page">
+        <header class="site-header">
+            <div class="container nav">
+                <span class="nav-logo">您的姓名 · Frontend Dev</span>
+                
+                <nav>
+                    <ul class="nav-list">
+                        <li><a href="#hero" class="nav-link">首頁</a></li>
+                        <li><a href="#about" class="nav-link">關於我</a></li>
+                        <li><a href="#skills" class="nav-link">技能</a></li>
+                        <li><a href="#projects" class="nav-link">作品集</a></li>
+                        <li><a href="#contact" class="nav-link">聯絡我</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <section id="hero" class="section section-hero">
+                <div class="container">
+                    <h1 class="hero-title">建立專業級的網頁體驗</h1>
+                    <p class="hero-subtitle">我是您的姓名，一位充滿熱情的前端開發者。</p>
+                    
+                    <div class="hero-placeholder-image">
+                        <img src="https://source.unsplash.com/1200x800/?developer,keyboard,code" alt="一位前端開發者正在使用筆電撰寫程式碼的形象照，背景是暗色系的工作空間。" loading="lazy">
+                    </div>
+                    
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="button">瀏覽作品集</a>
+                        <a href="#contact" class="button" style="margin-left: 1rem;">立即聯絡我</a>
+                    </div>
+                    
+                    <p style="margin-top: 3rem; font-style: italic; color: var(--color-text-secondary);">
+                        **[開發者提示]** 之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    </p>
+                </div>
+            </section>
+            <section id="about" class="section section-about" aria-labelledby="about-heading">
+                <div class="container">
+                    <h2 id="about-heading" class="section-title">關於我 (Section SDD 替換區)</h2>
+                    <p>這裡目前是 **About 區** 的占位內容，之後會用另一個 Prompt 產生正式內容，請把新的 section 程式碼整段貼回來，取代這一區。</p>
+                    <p>未來會在這裡放上：個人簡介、教育背景、工作理念、與前端相關的個人故事等。</p>
+                    <div style="margin-top: 2rem;">
+                         <img src="https://source.unsplash.com/600x400/?profile,developer" alt="一張用於個人簡介的形象圖片，可能是半身照或工作情境照" loading="lazy">
+                    </div>
+                    <p style="margin-top: 2rem; font-style: italic; color: var(--color-text-secondary);">
+                        **[開發者提示]** 之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    </p>
+                </div>
+            </section>
+            <section id="skills" class="section section-skills" aria-labelledby="skills-heading">
+                <div class="container">
+                    <h2 id="skills-heading" class="section-title">我的技能樹 (Section SDD 替換區)</h2>
+                    <p>這裡目前是 **Skills 區** 的占位內容，之後會用另一個 Prompt 產生正式內容，請把新的 section 程式碼整段貼回來，取代這一區。</p>
+                    <p>未來會以列表或卡片方式展示：HTML/CSS/JS、React/Vue/Angular、性能優化、RWD 設計等核心技能。</p>
+                    
+                    <ul class="skills-placeholder-list">
+                        <li class="skills-placeholder-item">HTML5 & CSS3</li>
+                        <li class="skills-placeholder-item">JavaScript (ES6+)</li>
+                        <li class="skills-placeholder-item">RWD 響應式設計</li>
+                        <li class="skills-placeholder-item">Git 版本控制</li>
+                    </ul>
+                    <p style="margin-top: 2rem; font-style: italic; color: var(--color-text-secondary);">
+                        **[開發者提示]** 之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    </p>
+                </div>
+            </section>
+            <section id="projects" class="section section-projects" aria-labelledby="projects-heading">
+                <div class="container">
+                    <h2 id="projects-heading" class="section-title">精選作品集 (Section SDD 替換區)</h2>
+                    <p>這裡目前是 **Projects 區** 的占位內容，之後會用另一個 Prompt 產生正式內容，請把新的 section 程式碼整段貼回來，取代這一區。</p>
+                    <p>未來會展示多個專案卡片，包含專案名稱、簡介、使用技術與連結。</p>
+                    
+                    <div class="projects-placeholder-grid" style="margin-top: 2rem;">
+                        <div class="project-placeholder-card">
+                            <img src="https://source.unsplash.com/800x600/?webapp,dashboard" alt="一個模擬的網站應用程式截圖" loading="lazy">
+                            <div class="project-placeholder-content">
+                                <h3>專案名稱 A (占位)</h3>
+                                <p>這是一個模擬的專案簡介，說明其目標與成果。未來會在這裡放上專案連結。</p>
+                                <a href="https://github.com/yourname/project-a" class="button" style="margin-top: 1rem; font-size: 0.85rem;">查看專案 (GitHub)</a>
+                            </div>
+                        </div>
+                        <div class="project-placeholder-card">
+                            <img src="https://source.unsplash.com/800x600/?ui,mockup" alt="一個模擬的網頁介面設計" loading="lazy">
+                            <div class="project-placeholder-content">
+                                <h3>專案名稱 B (占位)</h3>
+                                <p>這是一個模擬的專案簡介，強調其設計與用戶體驗。未來會在這裡放上專案連結。</p>
+                                <a href="https://github.com/yourname/project-b" class="button" style="margin-top: 1rem; font-size: 0.85rem;">查看專案 (GitHub)</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 3rem; font-style: italic; color: var(--color-text-secondary);">
+                        **[開發者提示]** 之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    </p>
+                </div>
+            </section>
+            <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
+                <div class="container">
+                    <h2 id="contact-heading" class="section-title">聯絡方式 (Section SDD 替換區)</h2>
+                    <p>這裡目前是 **Contact 區** 的占位內容，之後會用另一個 Prompt 產生正式內容，請把新的 section 程式碼整段貼回來，取代這一區。</p>
+                    <p>期待您的合作邀約！您可以透過以下方式與我聯繫，或觀看我的線上履歷。</p>
+                    
+                    <ul class="contact-placeholder-list">
+                        <li><a href="mailto:hello@example.com" class="button" style="margin-bottom: 0.5rem;">電子郵件</a></li>
+                        <li><a href="https://www.linkedin.com/in/yourname" class="button" style="margin-bottom: 0.5rem;">LinkedIn</a></li>
+                        <li><a href="https://github.com/yourname" class="button">GitHub</a></li>
+                    </ul>
+                    
+                    <p style="margin-top: 3rem; font-style: italic; color: var(--color-text-secondary);">
+                        **[開發者提示]** 之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    </p>
+                </div>
+            </section>
+            </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                &copy; 2025 您的姓名 · 前端開發. All rights reserved. 
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
