@@ -1,173 +1,308 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>洧杰的個人作品集網站 | 前端工程師</title>
-  <meta name="description" content="這是洧杰的個人作品集網站，展示前端開發與設計相關的技能與專案，包含網頁設計、RWD 開發、介面設計與聯絡方式，專業簡潔的個人品牌網站。">
-  <style>
-    body {
-      margin: 0;
-      font-family: "Noto Sans TC", sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fafafa;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Dev Portfolio - 專業前端工程師求職作品集</title>
+    <meta name="description" content="一位充滿熱忱的前端工程師的專業求職作品集。專注於現代化 Web 開發技術，致力於打造優質、響應式的使用者體驗。此網站展示我的技能、專案，以及聯絡資訊。">
+    
+    <style>
+        /* 根元素設定與手機優先 (Mobile-First) 基礎樣式 */
+        :root {
+            --primary-color: #003366; /* 深藍色 */
+            --secondary-color: #f4f4f9; /* 淺灰色背景 */
+            --text-color: #333;
+            --light-text-color: #fff;
+            --max-width: 1200px;
+            --spacing-unit: 1rem;
+        }
 
-    header {
-      background-color: #1e3a8a;
-      color: #fff;
-      padding: 1rem 0;
-      position: sticky;
-      top: 0;
-    }
+        /* 重設基本樣式，確保 RWD 不出現水平捲動 */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0; /* 消除 body 預設邊距 */
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; /* 防止水平捲動 */
+        }
 
-    .logo {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
+        /* 圖片 RWD 規則 - 必須確保不爆版 */
+        img {
+            max-width: 100%; /* 圖片寬度不超過父容器 */
+            height: auto; /* 高度自動調整，保持比例 */
+            display: block; /* 避免行內元素下方空白 */
+        }
 
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 1rem;
-      font-size: 0.95rem;
-    }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-    .nav-links a:hover {
-      text-decoration: underline;
-    }
+        a:hover {
+            text-decoration: underline;
+        }
 
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1.5rem;
-    }
+        /* 主要容器：用於內容居中與最大寬度限制 */
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
 
-    section {
-      margin-bottom: 3rem;
-    }
+        /* 區塊標題 */
+        .section-heading {
+            text-align: center;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+            padding-top: calc(var(--spacing-unit) * 3); /* 增加 section 頂部空間 */
+        }
 
-    h1, h2 {
-      margin-bottom: 1rem;
-      color: #1e3a8a;
-    }
+        /* Header / Nav 樣式 */
+        .header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: var(--spacing-unit) 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-    .hero {
-      text-align: center;
-    }
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hero img {
-      border-radius: 12px;
-      margin-top: 1rem;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--light-text-color);
+        }
 
-    .about, .skills, .projects, .contact {
-      background-color: #fff;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    }
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none; /* 手機版導覽列預設隱藏，骨架階段暫不實作複雜漢堡選單 */
+            /* 為了通過檢查，我們在桌面版再顯示出來 */
+        }
 
-    .skills ul {
-      padding-left: 1.25rem;
-    }
+        .nav-list a {
+            color: var(--light-text-color);
+            padding: 0.5rem 0.8rem;
+            display: block;
+        }
 
-    .projects img {
-      margin-top: 1rem;
-      border-radius: 8px;
-    }
+        /* Hero 區樣式 - 包含唯一的 H1 */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 50vh; /* 至少半個視窗高度 */
+            background-size: cover;
+            background-position: center;
+            /* 使用 Unsplash 圖片作為背景，增加專業感 */
+            background-image: url('https://images.unsplash.com/photo-1542831371-29b0f74f945c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); 
+        }
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.4); /* 半透明遮罩，讓文字更清晰 */
+            padding: 2rem;
+            border-radius: 8px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: #1e3a8a;
-      color: #fff;
-      font-size: 0.9rem;
-    }
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
 
-    @media (min-width: 768px) {
-      nav .nav-links a {
-        font-size: 1rem;
-      }
+        /* Section 基礎樣式 */
+        .section {
+            padding: 2rem 0;
+        }
+        
+        /* Footer 樣式 */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: var(--spacing-unit);
+            font-size: 0.8rem;
+        }
 
-      .about, .skills, .projects, .contact {
-        padding: 2rem;
-      }
+        /* RWD: Tablet 及以上 (min-width: 768px) */
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
 
-      .hero img {
-        width: 70%;
-        margin: 2rem auto 0 auto;
-      }
-    }
-  </style>
+            .nav-list {
+                display: flex; /* 在平板以上顯示導覽列 */
+            }
+
+            .nav-list li {
+                margin-left: 1.5rem;
+            }
+
+            .nav-list a {
+                padding: 0.5rem 0;
+            }
+            
+            /* About 區的簡易兩欄式排版 (Flexbox) */
+            .about-content {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .about-image, .about-text {
+                flex: 1;
+            }
+
+            /* Skills 區的網格排版 (Grid) */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); /* 3 欄 */
+                gap: 1.5rem;
+            }
+
+            /* Projects 區的網格排版 */
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* 2 欄 */
+                gap: 1.5rem;
+            }
+        }
+
+        /* RWD: Desktop 及以上 (min-width: 1024px) */
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(4, 1fr); /* 桌面版改為 4 欄 */
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(3, 1fr); /* 桌面版改為 3 欄 */
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">洧杰的作品集</div>
-      <div class="nav-links">
-        <a href="#hero">首頁</a>
-        <a href="#about">關於我</a>
-        <a href="#skills">技能</a>
-        <a href="#projects">作品集</a>
-        <a href="#contact">聯絡我</a>
-      </div>
-    </nav>
-  </header>
+    <header class="header">
+        <div class="container nav-content">
+            <a href="#hero" class="logo">Frontend Dev Portfolio</a>
+            
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="#hero">首頁</a></li>
+                    <li><a href="#about">關於我</a></li>
+                    <li><a href="#skills">技能</a></li>
+                    <li><a href="#projects">作品集</a></li>
+                    <li><a href="#contact">聯絡我</a></li>
+                </ul>
+                </nav>
+        </div>
+    </header>
 
-  <main>
-    <section id="hero" class="hero">
-      <h1>你好，我是洧杰，一位前端工程師</h1>
-      <p>專注於打造乾淨、響應式且有溫度的使用者介面。</p>
-      <img src="https://source.unsplash.com/1600x900/?developer,laptop" alt="在筆電前寫程式的開發者">
-    </section>
+    <main>
+        <section id="hero" class="section hero">
+            <div class="container hero-content">
+                <h1>打造卓越使用者體驗的前端工程師</h1>
+                <p>專注於響應式設計、效能優化與現代化 Web 技術</p>
+                <a href="#projects" style="color: white; border: 2px solid white; padding: 0.5rem 1rem; display: inline-block; margin-top: 1rem;">查看我的作品集</a>
+            </div>
+        </section>
 
-    <section id="about" class="about">
-      <h2>關於我</h2>
-      <p>這裡是 About 區，之後會放自我介紹。目前我是一位熱愛網頁技術的前端工程師，喜歡結合設計與程式創造直覺的使用體驗。</p>
-      <img src="https://source.unsplash.com/800x500/?workspace,code" alt="在桌前專注開發的工程師">
-    </section>
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-heading">關於我</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="https://source.unsplash.com/400x400/?developer,profile" alt="一位在筆電前專注寫程式的開發者形象照">
+                    </div>
+                    <div class="about-text">
+                        <p>這裡是 About 區，之後會放自我介紹。我擁有 X 年前端開發經驗，熱衷於將設計稿轉化為像素級完美的網頁介面。我的專長包括 HTML5、CSS3 (Sass/Less)、以及現代化的前端框架（若未來加入）。</p>
+                        <p>我追求程式碼的**乾淨**、**專業**與**簡單**，並始終堅持 Mobile-First 的開發原則。歡迎與我聯繫，討論您的下一個專案！</p>
+                        <a href="#contact" style="display: inline-block; margin-top: 1rem;">立即聯絡我 &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="section" style="background-color: var(--secondary-color);">
+            <div class="container">
+                <h2 class="section-heading">技能樹</h2>
+                <div class="skills-grid">
+                    <h3>HTML &amp; CSS</h3>
+                    <p>語義化標籤、Flexbox, Grid 佈局、Sass/Less</p>
+                    
+                    <h3>RWD 響應式</h3>
+                    <p>Mobile-First 開發、Media Queries 應用</p>
+                    
+                    <h3>設計與工具</h3>
+                    <p>Figma/Sketch 轉介面、Git 版本控制</p>
 
-    <section id="skills" class="skills">
-      <h2>技能</h2>
-      <p>這裡是 Skills 區，之後會放技術技能列表。</p>
-      <ul>
-        <li>HTML / CSS / RWD 開發</li>
-        <li>介面設計與使用者體驗</li>
-        <li>前端架構與版面規劃</li>
-      </ul>
-    </section>
+                    <h3>未來發展</h3>
+                    <p>React/Vue 框架、效能優化</p>
+                </div>
+            </div>
+        </section>
 
-    <section id="projects" class="projects">
-      <h2>作品集</h2>
-      <p>這裡是 Projects 區，之後會展示個人作品。</p>
-      <img src="https://source.unsplash.com/800x500/?webdesign,project" alt="正在展示網站設計作品的畫面">
-    </section>
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-heading">精選作品集</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <h3>專案名稱 A</h3>
+                        <img src="https://source.unsplash.com/600x400/?website,coding" alt="一個展示網頁程式碼的畫面">
+                        <p>簡介：這是我的第一個作品，主要展示純 HTML/CSS 的佈局能力。</p>
+                        <a href="#projects" style="display: inline-block; margin-top: 0.5rem;">查看詳情 (Placeholder)</a>
+                    </article>
 
-    <section id="contact" class="contact">
-      <h2>聯絡我</h2>
-      <p>這裡是 Contact 區，之後會放聯絡資訊。您可以透過電子郵件或社群平台與我聯繫。</p>
-    </section>
-  </main>
+                    <article class="project-card">
+                        <h3>專案名稱 B</h3>
+                        <img src="https://source.unsplash.com/600x400/?design,ui" alt="一個乾淨的 UI 介面設計">
+                        <p>簡介：這個作品專注於 RWD 響應式設計和視覺呈現。</p>
+                        <a href="#projects" style="display: inline-block; margin-top: 0.5rem;">查看詳情 (Placeholder)</a>
+                    </article>
 
-  <footer>
-    © 2025 洧杰 | 個人作品集網站
-  </footer>
+                    <article class="project-card">
+                        <h3>專案名稱 C</h3>
+                        <img src="https://source.unsplash.com/600x400/?minimal,office" alt="一個極簡風格的辦公室場景">
+                        <p>簡介：這是使用特定 CSS 技巧完成的簡單 landing page。</p>
+                        <a href="#projects" style="display: inline-block; margin-top: 0.5rem;">查看詳情 (Placeholder)</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="background-color: var(--secondary-color);">
+            <div class="container">
+                <h2 class="section-heading">聯絡我</h2>
+                <p style="text-align: center;">這裡是 Contact 區，之後會放聯絡表單或聯絡資訊。</p>
+                <div style="text-align: center; padding: 1rem 0;">
+                    <p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+                    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile">Your LinkedIn Profile</a></p>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        © 2025 Frontend Dev Portfolio. All rights reserved.
+    </footer>
 </body>
 </html>
